@@ -18,13 +18,18 @@ class PermutationsGenerator
             return;
         }
 
-        $remaining = [];
-        while (($value = array_pop($values)) !== null) {
-            foreach ($this->generator(array_merge($values, $remaining)) as $permutation) {
+        foreach ($values as $key => $value) {
+            $remaining = [];
+            foreach ($values as $k => $v) {
+                if ($k !== $key) {
+                    $remaining[] = $v;
+                }
+            }
+
+            foreach ($this->generator($remaining) as $permutation) {
                 $permutation[] = $value;
                 yield $permutation;
             }
-            $remaining[] = $value;
         }
     }
 }
