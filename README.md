@@ -21,10 +21,10 @@ composer require lunkkun/permutations-generator
 ```php
 <?php
 
-$generator = new \Lunkkun\PermutationsGenerator\PermutationsGenerator;
-
 $array = range(0, 2);
-foreach ($generator($array) as $permutation) {
+$generator = new \Lunkkun\PermutationsGenerator\PermutationsGenerator($array);
+
+foreach ($generator as $permutation) {
     print_r($permutation);
 }
 
