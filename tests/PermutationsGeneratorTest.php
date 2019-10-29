@@ -8,10 +8,10 @@ use PHPUnit\Framework\TestCase;
 class PermutationsGeneratorTest extends TestCase
 {
     public function testGeneratesPermutations() {
-        $generator = new PermutationsGenerator;
+        $generator = new PermutationsGenerator(range(0, 2));
 
         $results = [];
-        foreach ($generator(range(0, 2)) as $value) {
+        foreach ($generator as $value) {
             $results[] = $value;
         }
         sort($results);
@@ -27,10 +27,10 @@ class PermutationsGeneratorTest extends TestCase
     }
 
     public function testWorksWithEmptyArray() {
-        $generator = new PermutationsGenerator;
+        $generator = new PermutationsGenerator([]);
 
         $results = [];
-        foreach ($generator([]) as $value) {
+        foreach ($generator as $value) {
             $results[] = $value;
         }
 

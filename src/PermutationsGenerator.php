@@ -3,12 +3,13 @@
 namespace Lunkkun\PermutationsGenerator;
 
 use Generator;
+use IteratorIterator;
 
-class PermutationsGenerator
+class PermutationsGenerator extends IteratorIterator
 {
-    public function __invoke(array $values): Generator
+    public function __construct(array $values)
     {
-        return $this->generator($values);
+        parent::__construct($this->generator($values));
     }
 
     protected function generator(array $values): Generator

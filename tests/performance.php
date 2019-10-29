@@ -2,13 +2,12 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$permutationsGenerator = new \Lunkkun\PermutationsGenerator\PermutationsGenerator;
-
 $results = [];
 foreach (range(0, 4) as $i) {
     $start = microtime(true);
 
-    foreach ($permutationsGenerator((range(0, 9))) as $permutation) {}
+    $permutationsGenerator = new \Lunkkun\PermutationsGenerator\PermutationsGenerator(range(0, 9));
+    foreach ($permutationsGenerator as $permutation) {}
 
     $total = microtime(true) - $start;
     $results[] = $total;
